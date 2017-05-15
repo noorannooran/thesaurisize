@@ -2,9 +2,10 @@ from PyDictionary import PyDictionary
 import random
 
 dictionary = PyDictionary()
-thesaurisized = ''
+thesaurisized = '\n'
+synonyms = list()
 the_line = ''
-f = open ('resources/testfile.txt', 'r')
+f = open ('resources/testfile.txt', 'r+')
 rows = f.readlines()
 
 for sentence in rows:
@@ -21,5 +22,5 @@ for sentence in rows:
     thesaurisized += "\n"
 
 
-print(thesaurisized)
-
+f.write(thesaurisized)
+f.close()

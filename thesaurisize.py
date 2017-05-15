@@ -10,7 +10,7 @@ reconstructed = ''
 
 for word in sentence:
     synonyms = dictionary.synonym(word)
-    if len(synonyms) is 0:
+    if synonyms is None:
         reconstructed += word + " "
     else:
         max_x = len(synonyms)
