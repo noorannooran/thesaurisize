@@ -1,0 +1,6 @@
+This is a test
+To see if I'm able
+To read the lines of a file
+Find synonyms for the words
+And output the changed
+Lines to the user
