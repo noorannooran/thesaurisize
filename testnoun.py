@@ -5,6 +5,18 @@ class TestNoun:
     def __init__(self, dictionary):
         self.dictionary = dictionary
 
+    #returns true if word is key(noun, verb, etc)
+    def isKey(self, word, key):
+        try:
+            key = key.title()
+            if self.dictionary.meaning(word)[key]:
+                return True
+            else:
+                return False
+        except KeyError as e:
+            print(str(e))
+            return False
+        
     #returns true if word is a noun
     def isNoun(self, word):
         try:
@@ -53,6 +65,17 @@ class TestNoun:
                     synonym_nouns.append(word)
         return synonym_nouns
 
+    #returns a list of synonyms with the same key(Noun, Verb, etc)
+    def findSynonymKeys(self, word, key):
+        key = key.title()
+        synonym_keys = list()
+        if self.hasSynonyms(word) is True:
+            synonyms = self.findSynonyms(word)
+            for word in synonyms:
+                if self.isKey(word, key) is True:
+                    synonym_keys.append(word)
+        return synonym_keys
+    
      #returns a random word from a list of words   
     def randomWord(self, word_list):
         x_max = len(word_list) -1
@@ -68,9 +91,15 @@ def main():
     if test.isWord(word) is True:
             synonyms = test.findSynonymNouns(word)
             print(test.randomWord(synonyms))
+
+    word = "run"
+    if test.isWord(word) is True:
+            synonyms = test.findSynonymKeys(word, "Verb")
+            print(test.randomWord(synonyms))
+        
         
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
     
 ##dictionary = PyDictionary()
